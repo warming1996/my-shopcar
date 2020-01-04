@@ -1,67 +1,35 @@
 <template>
   <div>
-    <div class="box1">
-        <van-row type="flex">
-          <van-col span="6">
-            <router-link to="/home" :style="'color:' + homeLight">
-              <i class="iconfont icon-index-fill"></i>
-              <div>首页</div>
-            </router-link>
-          </van-col>
-          <van-col span="6">
-            <router-link to="/vip" :style="'color:' + vipLight">
-              <i class="iconfont icon-icon_zhanghao"></i>
-              <div>会员</div>
-            </router-link>
-          </van-col>
-          <van-col span="6">
-            <router-link to="/shopcar">
-              <van-icon name="cart-o" :info="$store.state.znum" />
-              <div>购物车</div>
-            </router-link>
-          </van-col>
-          <van-col span="6">
-            <router-link to="/api/getprodlist" :style="'color:' + seachLight">
-              <van-icon name="search" />
-              <div>搜索</div>
-            </router-link>
-          </van-col>
-        </van-row>
-    </div>
-    <div class="box"></div>
+    <van-tabbar v-model="active">
+      <van-tabbar-item to="/home" class="iconfont icon-index-fill"><span>首页</span></van-tabbar-item>
+      <van-tabbar-item to="/vip" class="iconfont icon-icon_zhanghao"><span>会员</span></van-tabbar-item>
+      <van-tabbar-item to="/shopcar" icon="cart-o"  :info="$store.state.znum">购物车</van-tabbar-item>
+      <van-tabbar-item to="/api/getprodlist" icon="search">搜索</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['homeLight', 'vipLight', 'seachLight'],
   data() {
-    return {}
-  }
+    return {
+      active: ''
+    }
+  },
+  created() {},
+  methods: {}
 }
 </script>
 
 <style lang="less" scoped>
-.box1 {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  padding-top: 10px;
-  padding-left:35px;
-  background-color: white;
-  a {
-    color: #7d7e80;
-  }
-  div {
-    font-size: 12px;
-  }
+.iconfont {
+  font-size: 16px;
 }
-.van-icon {
-  font-size: 18px;
+.van-tabbar-item__text{
+font-size: 12px;
 }
-.box {
-  height: 40px;
-  margin-top: 40px;
+
+.van-tabbar-item span{
+  font-size: 12px;
 }
 </style>
